@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+.canvasContainer{
+  width: 400px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.chartBox{
+  padding: 100px;
+
+}
+
+.exitInspect{
+  visibility: hidden;
+}
+
+.inspectButton{
+  position: relative;
+  top: 15px;
+}
+
+#ccontainer1{
+  /*width:900px;*/
+}
+
+#ccontainer2{
+  /*width:900px;*/
+}
+
+
+#ccontainer3{
+  /*width:900px;*/
+}
+
+#einspect1{
+
+}
+
+#einspect2{
+
+}
+
+#einspect3{
+
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+  </head>
+  <body>
+    <div>
+        <h1>Crime Data Display: Login Page</h1>
+        <h2>Please enter the correct password to gain access to the main data display page</h2>
+        <div class="input_group">
+          <input id="password_input" type="text" placeholder="password">
+          <button id="login_button">Login</button>
+        </div>
+    </div>
+
+  </body>
+</html>
+<script>
+  const access_password = "password"
+
+  var button = document.getElementById("login_button");
+  button.addEventListener("click", loginFunction);
+
+  function loginFunction(){
+     var password_text = document.getElementById('password_input').value;
+     if (password_text == access_password){
+       location.replace("homepage.html");
+     }else{
+       alert("incorrect password");
+     }
+  }
+
+  //function myFunction() {
+    //location.replace("https://www.w3schools.com")
+  //}
+
+
+</script>

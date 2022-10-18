@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Data Display</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+   <button onclick="logout()">Log out</button>
+   <div>
+     <h2>Welcome to Data Display Version 1.0</h2>
+     <h3>Benefits of Version 1.0</h3>
+     <ul>
+       <li>Visual Display of Data through graphs.</li>
+       <li>Data Protected by a login system.</li>
+       <li>Data can be inspected by clicking on it, or hovering over it.</li>
+       <li>Multiple features can be inspected at once.</li>
+       <li>All functionality is reversible.</li>
+       <li>Pie charts can be tinkered with.</li>
+     </ul>
+     <h3>Limitations of Version 1.0</h3>
+     <ul>
+       <li>Visual Display does not allow for display of data in raw format.</li>
+       <li>Data in the Graph cannot be edited.</li>
+       <li>Less stylised.</li>
+       <li>detailed texts explaining the stats not available.</li>
+     </ul>
+   </div>
+   <div class="flex_container">
+
+      <div class="chartBox">
+        <h2>Prison Population Every Year</h2>
+        <button class="exitInspect" id ="einspect1" onclick="exitInspect(1)">Exit Inspect Mode</button>
+        <div class = "canvasContainer" id="ccontainer1" onclick="inspect(1)">
+          <canvas id="myChart1"></canvas>
+        </div>
+        <button id="inspect1" class="inspectButton" onclick="inspect(1)">Click to Inspect</button>
+      </div>
+
+      <div class="chartBox">
+        <h2>Reported Violent Crime Rate in America</h2>
+        <button class="exitInspect"  id ="einspect2" onclick="exitInspect(2)">Exit Inspect Mode</button>
+        <div class = "canvasContainer" id="ccontainer2" onclick="inspect(2)">
+          <canvas id="myChart2"></canvas>
+        </div>
+        <button id="inspect2" class="inspectButton" onclick="inspect(2)">Click to Inspect</button>
+      </div>
+
+      <div class="chartBox">
+        <h2>Ethinicity of the US Prison Population</h2>
+        <button class="exitInspect"  id ="einspect3" onclick="exitInspect(3)">Exit Inspect Mode</button>
+        <div class = "canvasContainer" id="ccontainer3" onclick="inspect(3)">
+          <canvas id="myChart3"></canvas>
+        </div>
+        <button id="inspect3" class="inspectButton" onclick="inspect(3)">Click to Inspect</button>
+      </div>
+
+   </div>
+  </body>
+</html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<script>
+const ctx1 = document.getElementById('myChart1').getContext('2d');
+const myChart1 = new Chart(ctx1, {
+    type: 'bar',
+    data: {
+        labels: ['11', '12', '13', '14', '15','16','17','18','19','20','21'],
+        datasets: [{
+            label: 'Prison Population each year (million)',
+            data: [1.60,1.57,1.52,1.51,1.48,1.46,1.44, 1.41, 1.38, 1.2,1.19],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(54, 162, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+const ctx2 = document.getElementById('myChart2').getContext('2d');
+const chart2_baccolor = 'rgba(54, 162, 135, 0.2)';
+const chart2_borccolor = 'rgba(54, 162, 235, 1)';
+const myChart2 = new Chart(ctx2, {
+    type: 'line',
+    data: {
+        labels: ['11','12','13','14','15','16','17', '18', '19', '20', '21',],
+        datasets: [{
+            label: 'Reported Violent Crime per 100,000',
+            data: [387.1,387.8,369.1,361.6,373.7,397.5,394.9,383.4,380.8,402.6,395.7],
+            backgroundColor: [
+                chart2_baccolor,
+                chart2_baccolor,
+                chart2_baccolor,
+                chart2_baccolor,
+                chart2_baccolor,
+                chart2_baccolor,
+                chart2_baccolor,
+                chart2_baccolor,
+                chart2_baccolor,
+                chart2_baccolor
+            ],
+            borderColor: [
+
+                chart2_borccolor,
+                chart2_borccolor,
+                chart2_borccolor,
+                chart2_borccolor,
+                chart2_borccolor,
+                chart2_borccolor,
+                chart2_borccolor,
+                chart2_borccolor,
+                chart2_borccolor,
+                chart2_borccolor
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+const ctx3 = document.getElementById('myChart3').getContext('2d');
+const myChart3 = new Chart(ctx3, {
+    type: 'pie',
+    data: {
+        labels: ['Black','White','Hispanic','Asian/Pacific Islander','Native American'],
+        datasets: [{
+            label: 'Ethinicity by % of the US Prison Population under 30',
+            data: [56.6,27.6,13.1,1.89, 0.889],
+            backgroundColor: [
+            'rgb(54, 162, 235)',
+            'rgb(0, 102, 102)',
+            'rgb(102, 255, 51)',
+            'rgb(153, 51, 255)',
+            'rgb(255, 0, 102)'
+            ],
+            borderWidth: 0.5
+        }]
+    },
+    options: {
+        maintainAspectRatio: false
+    }
+});
+
+
+  function logout(){
+     location.replace("index.html");
+  }
+
+  function inspect(i){
+    var canvas_string = "ccontainer" + i;
+    var i_b_id = "inspect" + i;
+    var exit_b_id = "einspect" + i;
+
+    document.getElementById(canvas_string).style.width = "800px";
+    document.getElementById(canvas_string).style.height = "400px";
+
+    document.getElementById(exit_b_id).style.visibility = "visible";
+    document.getElementById(i_b_id).style.visibility = "hidden";
+
+  }
+
+  function exitInspect(i){
+    var canvas_string = "ccontainer" + i;
+    var i_b_id = "inspect" + i;
+    var exit_b_id = "einspect" + i;
+
+    document.getElementById(canvas_string).style.width = "400px";
+    document.getElementById(canvas_string).style.height = "200px";
+
+    document.getElementById(exit_b_id).style.visibility = "hidden";
+    document.getElementById(i_b_id).style.visibility = "visible";
+
+  }
+</script>
